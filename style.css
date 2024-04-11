@@ -1,0 +1,214 @@
+
+/* google fonts (raleway) link imported */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+
+/*--------------------------------------------------------
+css color variables for reusability
+--------------------------------------------------------*/
+:root{
+    --metal-background:#eb19eb33;
+    --metal-border:#c242c2;
+    --nonmetal-background:#ffa60033;
+    --nonmetal-border-color:#ffa500;
+    --metalloid-background:#03fe0333;
+    --metalloid-border:#008000;
+    --purple-background:#ed086b95;
+    --purple-border:#da005eef;
+    --darkest-color:#111;
+    --darker-color:#333;
+    --dark-color:#444;
+    --shadow-color:#ed086b3c;
+    --special-background:#043afb33;
+    --special-border:#2b6cef;
+}
+
+/*--------------------------------------------------------
+reseting some default css
+--------------------------------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Raleway', sans-serif, serif;
+    color: white;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background:var(--darkest-color);
+    overflow: hidden;
+}
+
+button{
+    cursor: pointer;
+}
+
+/*--------------------------------------------------------
+css for: HEADING, CONTAINER, ELEMENT CELLS AND EMPTY CELLS
+--------------------------------------------------------*/
+.heading1{
+    font-size:2.8rem;
+    margin-bottom: 0.5rem;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(18,1fr);
+    grid-template-rows: repeat(9,1fr);
+    gap:0.5vmin;
+}
+
+
+.cell{
+    width: 8vmin;
+    height: 8vmin;
+    background: grey;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+}
+
+.cell.empty{
+    background: transparent;
+    pointer-events: none;
+}
+
+/*--------------------------------------------------------
+css for: METAL, NON-METAL, METALLOID AND SPECIAL CELLS
+--------------------------------------------------------*/
+
+.nonmetal {
+    background: var(--nonmetal-background);
+    color: orange;
+    border:1.5px solid var(--nonmetal-border-color);
+}
+.metalloid {
+    background: var(--metalloid-background);
+    color: lime;
+    border:1.5px solid var(--metalloid-border);
+}
+.metal {
+    background: var(--metal-background);
+    color: violet;
+    border:1.5px solid var(--metal-border);
+}
+.special{
+    background: var(--special-background);
+    color: dodgerblue;
+    border: 1.5px solid var(--special-border);
+}
+
+/*--------------------------------------------------------
+css for: FLOATER AND IT'S ANIMATION KEYFRAME
+--------------------------------------------------------*/
+.floater{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 15vmin;
+    height: 15vmin;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 3;
+    background: var(--purple-background);
+    border:3.5px solid var(--purple-border);
+    border-radius: 50%;
+    backdrop-filter: blur(3px);
+    animation: viewin 0.4s ease-in-out;
+}
+
+@keyframes viewin{
+    from{
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    to{
+        opacity:1;
+        width: 15vmin;
+        height:15vmin;
+    }
+}
+
+.floater h1{
+    font-size:2rem;
+}
+.floater p{
+    font-size: 0.65rem;
+}
+
+/*--------------------------------------------------------
+css for: INFO SCREEN
+--------------------------------------------------------*/
+
+.info-screen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--darker-color);
+    z-index: 5;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2vmin;
+    animation: slideIn 0.3s ease-in;
+}
+
+@keyframes  slideIn{
+    from{
+        top: 120%;
+        opacity: 0;
+    }
+    to{
+        top:0;
+        opacity: 1;
+    }
+}
+
+.info-card{
+    width: 100%;
+    max-width: 720px;
+    padding: 2vmin;
+    background: var(--darkest-color);
+    border-radius:1.5vmin;
+}
+
+.copy{
+    padding: 0.8vmin 1.3vmin;
+    border-radius:1vmin;
+    cursor: pointer;
+    font-weight: 600;
+    background: var(--darkest-color);
+    transition: all 0.2s ease-in;
+}
+
+button{
+    background: var(--purple-background);
+    border: 1.5px solid var(--purple-border);
+    border-radius:1.2vmin;
+    padding: 0.8vmin 1.5vmin;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* copy styling */
+.copied{
+    background: var(--metalloid-background);
+}
